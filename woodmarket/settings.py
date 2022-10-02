@@ -22,9 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
-EMAIL_HOST = config('EMAIL_HOST', default='localhost')
-EMAIL_PORT = config('EMAIL_PORT', default=25, cast=int)
+DEBUG = config('DEBUG', cast=bool)
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -41,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -80,13 +80,14 @@ WSGI_APPLICATION = 'woodmarket.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'woodmarket_db',
-        'USER': 'postgres',
-        'PASSWORD': 'Rusgrdsb11@',
-        'HOST': 'Local',
-        'PORT': '5433',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
     }
 }
+AUTH_USER_MODEL = 'accounts.user'
 
 
 # Password validation
@@ -126,4 +127,21 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT =BASE_DIR /'static'
 STATICFILES_DIRS = [
-    
+    'woodmarket/static'
+]
+
+
+# Media files configuration
+MEDIA_URL = '/media/'
+MEDIA_ROOT =BASE_DIR /'media'
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
