@@ -1,3 +1,4 @@
+from django.db.models import signals
 from django.db.models.signals import post_save, pre_save
 from django.dispatch import receiver
 from .models import User, UserProfile
@@ -15,6 +16,7 @@ def post_save_create_profile_receiver(sender, instance, created, **kwargs):
         except:
             # Create the userprofile if not exist
             UserProfile.objects.create(user=instance)
+            print('Created')
 
 
 @receiver(pre_save, sender=User)
