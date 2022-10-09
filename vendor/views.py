@@ -167,40 +167,40 @@ def add_product(request):
 
 
 
-# # @login_required(login_url='login')
-# # @user_passes_test(check_role_vendor)
-# def edit_product(request, pk=None):
-#     food = get_object_or_404(ProductItem, pk=pk)
-#     if request.method == 'POST':
-#         form = ProductItemForm(request.POST, request.FILES, instance=product)
-#         if form.is_valid():
-#             producttitle = form.cleaned_data['product_title']
-#             product = form.save(commit=False)
-#             product.vendor = get_vendor(request)
-#             product.slug = slugify(producttitle)
-#             form.save()
-#             messages.success(request, 'Product Item updated successfully!')
-#             return redirect('productitems_by_category', product.category.id)
-#         else:
-#             print(form.errors)
+@login_required(login_url='login')
+@user_passes_test(check_role_vendor)
+def edit_product(request, pk=None):
+    product = get_object_or_404(ProductItem, pk=pk)
+    if request.method == 'POST':
+        form = ProductItemForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            producttitle = form.cleaned_data['product_title']
+            product = form.save(commit=False)
+            product.vendor = get_vendor(request)
+            product.slug = slugify(producttitle)
+            form.save()
+            messages.success(request, 'Product Item updated successfully!')
+            return redirect('productitems_by_category', product.category.id)
+        else:
+            print(form.errors)
 
-#     else:
-#         form = ProductItemForm(instance=product)
-#         form.fields['category'].queryset = Category.objects.filter(vendor=get_vendor(request))
-#     context = {
-#         'form': form,
-#         'product': product,
-#     }
-#     return render(request, 'vendor/edit_product.html', context)
+    else:
+        form = ProductItemForm(instance=product)
+        form.fields['category'].queryset = Category.objects.filter(vendor=get_vendor(request))
+    context = {
+        'form': form,
+        'product': product,
+    }
+    return render(request, 'vendor/edit_product.html', context)
 
 
-# # @login_required(login_url='login')
-# # @user_passes_test(check_role_vendor)
-# def delete_product(request, pk=None):
-#     food = get_object_or_404(ProductItem, pk=pk)
-#     product.delete()
-#     messages.success(request, 'Product Item has been deleted successfully!')
-#     return redirect('productitems_by_category', product.category.id)
+@login_required(login_url='login')
+@user_passes_test(check_role_vendor)
+def delete_product(request, pk=None):
+    product = get_object_or_404(ProductItem, pk=pk)
+    product.delete()
+    messages.success(request, 'Product Item has been deleted successfully!')
+    return redirect('productitems_by_category', product.category.id)
 
 
 # def opening_hours(request):
