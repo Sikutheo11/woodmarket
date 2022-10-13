@@ -28,7 +28,7 @@ DEBUG = config('DEBUG', cast=bool)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['170.187.254.113', '127.0.0.1', 'rwiliwoodmarkwt.tk', 'www.rwiliwoodmarket.tk']
+ALLOWED_HOSTS = ['170.187.254.113', '127.0.0.1', 'rwiliwoodmarket.tk', 'www.rwiliwoodmarket.tk']
 
 
 # Application definition
