@@ -14,9 +14,7 @@
 							<div class="element-title">
 								<h1 style="font-size: 40px; color: #FFFFFF; text-transform: uppercase; line-height: 50px; margin-bottom: 25px; text-align:center;">
 									We are in wood value chain business<br>Our Services</h1>
-								<p style="font-size: 18px; letter-spacing: 1px; color: #FFFFFF; text-align:center;">
-									Ridiculus sociosqu
-									cursus neque cursus curae ante scelerisque vehicula.</p>
+						
 							</div>
 						</div>
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
@@ -114,10 +112,10 @@
 										<figure>
 											{% if vendor.user_profile.profile_picture %}
 											<a href="#}"><img src="{{ vendor.user_profile.profile_picture.url }}" height="125" class="attachment-full size-full wp-post-image" alt=""></a>
-											{% comment %} {% url 'vendor_detail' vendor.vendor_slug %} {% endcomment %}
+											{% url 'vendor_detail' vendor.vendor_slug %}
 											{% else %}
 											<a href="#"><img src="{% static 'images/default-picture.jpg' %}" height="125" class="attachment-full size-full wp-post-image" alt=""></a>
-											{% comment %} {% url 'vendor_detail' vendor.vendor_slug %} {% endcomment %}
+											{% url 'vendor_detail' vendor.vendor_slug %}
 											{% endif %}
 										</figure>
 							  		</li>
@@ -128,7 +126,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- Top Restarurants Section End -->
+			<!-- Top Business Section End -->
 			<!-- Choose From Most Popular Listin Start -->
 			<div class="page-section nopadding cs-nomargin" style="margin-top: 0px;padding-top: 60px;padding-bottom: 50px;margin-bottom: 0px;background: #ffffff;">
 				<div class="container">
@@ -136,7 +134,6 @@
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div class="element-title align-center">
 								<h2>Choose From Most Popular wood Business</h2>
-								<p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p>
 							</div>
 						</div>
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -147,11 +144,11 @@
 								<div class="list-post featured">
 									<div class="img-holder">
 										<figure>
-											{% comment %} <a href="{% url 'vendor_detail' vendor.vendor_slug %}"> {% endcomment %}
+											<a href="{% url 'vendor_detail' vendor.vendor_slug %}">
 												{% if vendor.user_profile.profile_picture %}
 												<img src="{{ vendor.user_profile.profile_picture.url }}" class="img-thumb wp-post-image" alt="">
 												{% else %}
-												<img src="{% static 'images/default-profile.png' %}" class="img-thumb wp-post-image" alt="">
+												<img src="{% static 'images/default-picture.jpg' %}" class="img-thumb wp-post-image" alt="">
 												{% endif %}
 											</a>
 										</figure>
@@ -170,7 +167,7 @@
 										
 										<div class="post-title">
 											<h5>
-												{% comment %} <a href="{% url 'vendor_detail' vendor.vendor_slug %}">{{ vendor }}</a> {% endcomment %}
+												<a href="{% url 'vendor_detail' vendor.vendor_slug %}">{{ vendor }}</a>
 											</h5>
 										</div>
 										{% if vendor.user_profile.city and vendor.user_profile.state and vendor.user_profile.pin_code %}

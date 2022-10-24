@@ -108,9 +108,9 @@
                                                 <div class="price-holder">
                                                     <span class="price">{{ product.price }} rwf</span>
 
-                                                    {% comment %} <a href="#" class="decrease_cart" data-id="{{ product.id }}" data-url="{% url 'decrease_cart' product.id %}" style="margin-right: 28px;"><i class="icon-minus text-color"></i></a>
+                                                    <a href="#" class="decrease_cart" data-id="{{ product.id }}" data-url="{% url 'decrease_cart' product.id %}" style="margin-right: 28px;"><i class="icon-minus text-color"></i></a>
                                                     <label id="qty-{{product.id}}">0</label>
-                                                    <a href="#" class="add_to_cart" data-id="{{product.id }}" data-url="{% url 'add_to_cart' product.id %}"><i class="icon-plus4 text-color"></i></a> {% endcomment %}
+                                                    <a href="#" class="add_to_cart" data-id="{{product.id }}" data-url="{% url 'add_to_cart' product.id %}"><i class="icon-plus4 text-color"></i></a>
                                                     
                                                 </div>
                                             </li>
@@ -121,13 +121,11 @@
                                         
                                     </div>
 
-                                    {% comment %} {% for item in cart_items %} {% endcomment %}
+                                    {% for item in cart_items %}
 
                                     <span id="qty-{{item.producttem.id}}" class="item_qty d-none" data-qty="{{ item.quantity }}">{{ item.quantity }}</span>
 
-                                    
-{% comment %} 
-                                    {% endfor %} {% endcomment %}
+                                    {% endfor %} 
                                 </div>
                             </div>
                             
